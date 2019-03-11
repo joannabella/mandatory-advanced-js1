@@ -1,14 +1,65 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+::-webkit-scrollbar {
+  display: none;
 }
+
+.chat-window {
+  margin: 0 auto;
+  width: 800px;
+  max-height: 710px;
+  overflow: scroll;
+}
+
+.chat-list {
+  list-style-type: none;
+}
+
+.singleMessage {
+  margin-bottom: 20px;
+  background-image: linear-gradient(to right, #51a1fd, rgb(72, 255, 231));
+  width: 395px;
+  min-height: 90px;
+  border-radius: 15px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.tail {
+  position: relative;
+  display: block;
+  left: -33px;
+  top: -55px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 13.5px 35px 13.5px 0;
+  border-color: transparent #51a1fd transparent transparent;  
+}
+
+.message-username {
+  position: relative;
+  top: 8px;
+  left: 30px;
+  font-size: 17px;
+}
+
+.message-timestamp {
+  position: relative;
+  top: -27px;
+  left: 220px;
+  font-size: 14px;
+}
+
+.message-content {
+  position: relative;
+  left: 30px; 
+  top: -35px;
+  margin-left: 0px; 
+  max-width: 335px;
+  height: 0px;
+  font-size: 14px;
+}
+
