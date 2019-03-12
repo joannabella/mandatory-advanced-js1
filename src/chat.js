@@ -14,6 +14,7 @@ class Chat extends Component {
     this.state = {
       username: props.username,
       message: '',
+      infoMessage: '',
       messages: [
     
       ],
@@ -49,7 +50,15 @@ class Chat extends Component {
     this.setState({ message: event.target.value });
   }
 
-  onSend = () => {
+  onSend = (event) => {
+    event.preventDefault();
+    if (this.state.message.length < 1 || this.state.message.length > 200) {
+      this.setState({ infoMessage: 'Your message can only be between 1-200 characters long' })
+      return;
+    }
+
+    console.log(this.state.message.length);
+
     this.socket.emit('message', {
       username: this.state.username,
       content: this.state.message,  
@@ -70,6 +79,7 @@ class Chat extends Component {
             <button onClick={this.props.onLogout}>Logout</button>
             <input onChange={this.onChange} placeholder='Write message..'></input>
             <button onClick={this.onSend}>Send</button> 
+            <p style={{ color: this.state.color }}>{this.state.infoMessage}</p>
             <ul className='chat-list'>
               {this.state.messages.map(message => {
                 return <Message username={message.username} timestamp={getTime(message.timestamp)} content={message.content} key={message.id} tail={message.tail} /> 

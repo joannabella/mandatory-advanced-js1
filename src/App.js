@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: false, 
       username: '',
+      validusername: false,
     };
     this.onLogin = this.onLogin.bind(this);
     this.onLogout = this.onLogout.bind(this);
