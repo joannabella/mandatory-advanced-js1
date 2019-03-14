@@ -42,18 +42,26 @@ const MessageContent = (props) => {
  }
 
   return(
-    <p>{splittedWords.map(string => findEmoji(find(string))).map(string => [string, ' '])}</p>
+    <p className='message-content'>{splittedWords.map(string => findEmoji(find(string))).map(string => [string, ' '])}</p>
   );
 };
 
 class message extends Component {
   render() {
+    let messageClass = '';
+    let tailClass = '';
+
+    if (this.props.myUsername === this.props.username) {
+      messageClass = 'my-message';
+      tailClass = "my-message-tail";
+    }
+
     return (
-      <li className='singleMessage'>
-        <p className='message-username'>{this.props.username}</p>
-        <p className='message-timestamp'>{this.props.timestamp}</p>
-        <MessageContent className='message-content'>{this.props.content}</MessageContent>
-        <span className='tail'>{this.props.tail}</span>
+      <li className={'singleMessage ' + messageClass}>
+        <span className='message-username'>{this.props.username}</span>
+        <span className='message-timestamp'>{this.props.timestamp}</span>
+        <MessageContent>{this.props.content}</MessageContent>
+        <span className={'tail ' + tailClass}>{this.props.tail}</span>
       </li>
     )
   }

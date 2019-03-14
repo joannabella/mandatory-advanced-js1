@@ -13,15 +13,12 @@ class App extends Component {
     this.state = {
       isLoggedIn: false, 
       username: '',
-      validusername: false,
     };
     this.onLogin = this.onLogin.bind(this);
     this.onLogout = this.onLogout.bind(this);
   }
 
   onLogin(event) {
-    console.log(event);
-    
     this.setState({ isLoggedIn: true, username: event.username });  
   }
 

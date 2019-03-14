@@ -18,32 +18,29 @@ class Login extends Component {
 
   login(event) {
     event.preventDefault();
-    if (this.state.username === '') {
-      this.setState({ infoMessage: 'Please provide a username' });
-    }
-    else if (this.state.username.length === 0) {
-      this.setState({ infoMessage: '' });
-    }
 
     let regex = /^[\s\wÅÄÖåäö-]{1,12}$/;
     if (regex.test(this.state.username)) {
       this.props.onLogin({ username: this.state.username });
-      console.log('correct');
+    }
+    else if (this.state.username === '') {
+      this.setState({ infoMessage: 'Please provide a username :-)', color: 'red' });
     }
     else {
-      console.log('not good');
       this.setState({ infoMessage: 'The username should be between 1-12 characters (or numbers) long and may contain "-" or "_"', color: 'red' });
     }
   }
 
    render() {
      return (
-     <div className='login-window'>  
+     <div className='login-window login-tail'>  
         <form className='login-form'>
-          <label htmlFor='username'>Pick a username</label>  
-          <p style={{ color: this.state.color }}>{this.state.infoMessage}</p>
-          <input onChange={this.onChange} value={this.state.username} name='username' placeholder='pug-lover_92'></input>  
-          <button type='submit' onClick={this.login}>Login</button>
+          <h1 className='login-welcome'>Talkative</h1>
+          <label className='login-title' htmlFor='username'>Pick your username:</label>  
+          <p className='login-error' style={{ color: this.state.color }}>{this.state.infoMessage}</p>
+          <input className='userfield' name='pickusername' onChange={this.onChange} value={this.state.username} name='username' placeholder='Username' spellCheck='false'></input>  
+          <label className='userinput' htmlFor='pickusername'></label>  
+          <button className='loginButton' type='submit' onClick={this.login}>Login</button>
         </form>
      </div>
      )
